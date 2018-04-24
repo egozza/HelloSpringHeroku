@@ -27,7 +27,7 @@ public class HoneController {
 
         if (instanceInfo != null) {
             Map<Class<?>, String> services = new LinkedHashMap<>();
-            services.put(dataSource.getClass(), toString(dataSource));
+            services.put(dataSource.getClass(), dataSource.toString());
             model.addAttribute("services", services.entrySet());
         }
 
