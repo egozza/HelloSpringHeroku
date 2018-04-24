@@ -1,5 +1,6 @@
 package ru.cloud.my;
 
+import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.app.ApplicationInstanceInfo;
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,7 @@ public class HoneController {
 
         if (instanceInfo != null) {
             Map<Class<?>, String> services = new LinkedHashMap<>();
-            services.put(dataSource.getClass(), dataSource.toString());
+            services.put(dataSource.getClass(), ((HikariDataSource) dataSource).getJdbcUrl());
             model.addAttribute("services", services.entrySet());
         }
 
